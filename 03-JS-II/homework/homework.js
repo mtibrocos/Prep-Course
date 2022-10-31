@@ -225,12 +225,12 @@ function tablaDelSeis() {
   //Escribe tu código aquí 
   var seis=[];
   for (var i=0 ; i<=10 ; i++){
-    seis+= 6*i+",";   
+    seis.push(6*i);   
     
 
  
   }
-  return "["+seis+"]";
+  return seis;
 }
 function tieneTresDigitos(numero) {
   //Leer un número entero y retornar true si tiene 3 dígitos. Caso contrario, retorna false.
