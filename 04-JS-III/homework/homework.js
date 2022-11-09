@@ -12,7 +12,9 @@ function devolverUltimoElemento(array) {
   // Devuelve el último elemento de un array
   // Tu código:
 
-  return array.pop();
+//  return array.pop(); una forma pero perderia el elemento
+  return array[array.length-1]
+  // aca le doy la ultima posicion , se que con length tengo el valor total de lementos del arreglo, le resto 1 por que enpiesa en 0 y consigo tener la posicion del ultimo. 
 }
 
 
@@ -28,23 +30,25 @@ function incrementarPorUno(array) {
   // Aumenta cada entero por 1
   // y devuelve el array
   // Tu código:
-  var entero = [];
+  //var entero = []; va para el primer codigo inicio el nuevo array donde guargo los resutados
   for (var i = 0; i < array.length; i++) {
+// de esta forma verifico que sea un numero entero y le sumo 1 dependiendo si es + o - 
+  //   if (array[i] % 1 === 0 && array[i] < 0) {
+  //     entero[i] = array[i] - 1
+  //   } else {
+  //     if (array[i] % 1 === 0 && array[i] > 0) {
+  //       entero[i] = array[i] + 1
 
-    if (array[i] % 1 === 0 && array[i] < 0) {
-      entero[i] = array[i] - 1
-    } else {
-      if (array[i] % 1 === 0 && array[i] > 0) {
-        entero[i] = array[i] + 1
-
-      }
-    }
-  }
-  return entero;
-
-
+  //     }
+  //   }
+  // }
+  // return entero;
+array[i]+=1
+//le sumo 1 al array y lo guardo. 
 }
-
+// salgo del for e imprimo el array modificado
+return array;
+}
 function agregarItemAlFinalDelArray(array, elemento) {
   // Añade el "elemento" al final del array
   // y devuelve el array
@@ -78,33 +82,42 @@ function dePalabrasAFrase(palabras) {
   frase = frase + palabras.pop();
   return frase;
 }
-
+// una manera mas sencilla es usar la funcion "join" que me une los elementos de una array
+// return palabras.join(" ") entre los parentesis va lo que quiero intercalar entre los elementos.
 
 function arrayContiene(array, elemento) {
   // Comprueba si el elemento existe dentro de "array"
   // Devuelve "true" si está, o "false" si no está
   // Tu código:
-  let i = 0
-  do {
-    if (elemento === array[i]) {
-      return true;
-    } else {
-      i++
-    }
+  // usando do while
+//   let i = 0
+//   do {
+//     if (elemento === array[i]) {
+//       return true;
+//     } else {
+//       i++
+//     }
 
-  } while (i < array.length);
-  return false;
+//   } while (i < array.length);
+//   return false;
 
+// }
+// usando for
+for (var i=0; i<array.length; i++){
+  if (array[i]===elemento){
+    return true;
+  }
 }
-
-
+return false
+}
 function agregarNumeros(numeros) {
   // "numeros" debe ser un arreglo de enteros (int/integers)
   // Suma todos los enteros y devuelve el valor
   // Tu código:
   var entero = 0;
   for (var i = 0; i < numeros.length; i++) {
-    entero += Math.floor(numeros[i])
+    //entero += Math.floor(numeros[i]) en esta linea me aseguro de sumar la parte entera si no lo fuera.
+    entero+=numeros[i];
 
   }
   return entero;
@@ -119,11 +132,11 @@ function promedioResultadosTest(resultadosTest) {
   var suma = 0;
   for (var i = 0; i < resultadosTest.length; i++) {
     suma += (resultadosTest[i]);
-    cant++;
+    
 
 
   }
-  return suma / cant;
+  return suma / resultadosTest.length;
 }
 
 
@@ -202,7 +215,11 @@ function empiezaConNueve(n) {
   //Desarrolle una función que recibe como parámetro un número entero n. Debe retornar true si el entero 
   //inicia con 9 y false en otro caso.
   //Escribe tu código aquí
-
+var tranformaAstring= n + "";
+if (tranformaAstring[0]==="9"){
+  return true;
+} else{ return false;
+}
 
 }
 
@@ -214,13 +231,15 @@ function todosIguales(arreglo) {
   //Escribe tu código aquí  
   let elemento = arreglo[0];
   for (let i = 1; i < arreglo.length; i++) {
-    if (elemento === arreglo[i]) {
-      elemento === arreglo.length[i]
-    } else { return false; }
+    if (elemento !== arreglo[i]) {
+      return false; 
+    }
   }
-  return true;
-
+ return true;   
 }
+    
+      
+
 
 
 function mesesDelAño(array) {
@@ -278,23 +297,21 @@ function breakStatement(numero) {
   //Pista: usá el statement 'break'
   // Tu código:
   
-  nuevoArray = [];
+  var nuevoArray = [];
   var suma = numero;
   for (var i = 0; i < 10; i++) {
-    suma += 2
+    suma += 2 
+    if (suma === i) break;
+      
     nuevoArray.push(suma)
-    if (nuevoArray[i] == i) {
-      console.log("Se interrumpió la ejecución");
-      break;
-    }
+      }
+
+  if (i<10) {
+    return "Se interrumpió la ejecución";
+  }else { return nuevoArray;
   }
-  return nuevoArray;
 }
-
-
-
-
-
+        
 
 
 function continueStatement(numero) {
@@ -308,20 +325,24 @@ function continueStatement(numero) {
   nuevoArray = [];
   var suma = numero;
   for (var i = 0; i < 10; i++) {
-    
-     if (i == 5) {
-      nuevoArray.pop()
-      continue;}
-      else{
-      nuevoArray.push(suma)
-      suma+=2
-      }
-
+    suma+=2
+     if (i === 5) continue;
+     //salta el push
+     nuevoArray.push(suma)
     }
+   return nuevoArray;
+  }
+    
+      
       
     
-    return nuevoArray;
-  }
+   
+
+
+
+
+
+
 
 
   
