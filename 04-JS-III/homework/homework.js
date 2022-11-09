@@ -322,14 +322,16 @@ function continueStatement(numero) {
   //Pista: usá el statement 'continue'
   // Tu código:
   
-  nuevoArray = [];
+  var nuevoArray = [];
   var suma = numero;
   for (var i = 0; i < 10; i++) {
-    suma+=2
-     if (i === 5) continue;
-     //salta el push
+    if (i === 5) continue;
+    //salta el push
+    else{
+      suma+=2
      nuevoArray.push(suma)
     }
+  }
    return nuevoArray;
   }
     
